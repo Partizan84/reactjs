@@ -10,7 +10,6 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static', 'build'),
         filename: 'bundle.js',
-        publicPath: '/static/build/',
     },
     module: {
         rules: [
@@ -29,6 +28,12 @@ module.exports = {
                             },
                         ],
                     ],
+                    plugins: [
+                        [
+                            '@babel/plugin-proposal-class-properties',
+                            {loose: true},
+                        ],
+                    ],
                 },
             },
         ],
@@ -39,9 +44,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin(
             {
-                template: path.resolve(__dirname,'./index.html'),
+                template: 'index.html',
                 filename: 'index.html',
             },
         ),
     ],
+    devtool: 'inline-source-map',
 };
