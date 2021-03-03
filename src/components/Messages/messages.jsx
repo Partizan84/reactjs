@@ -5,23 +5,24 @@
 import {Component} from 'react';
 
 class Messages extends Component {
-    constructor(props){
-        super(props);
-    }
-    
+
     render() {
-        const {messages = [] } = this.props;
+        const {messages = [], count, handelClick } = this.props;
         return (
-            <div className='messages'>
-                {messages.map((item, index) => (
-                    <Message key={index} text={item} />
-                ))}
-            </div>
+            <>
+                <div className='messages'>
+                    {messages.map((item, index) => (
+                        <Message key={index} text={item} />
+                    ))}
+                </div>
+                <button onClick={handelClick}>{count}</button>
+            </>
         );
     }
 }
-//const Messages = (props) => {
-//    const {messages = []} = props;
+ 
+// const Messages = (props) => {   
+// const {messages = []} = props;
 //
 //    return (
 //        <div className='messages'>

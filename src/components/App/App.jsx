@@ -5,6 +5,7 @@ import {Messages} from '../Messages';
 class App extends Component {
         state = {
             count: 0,
+            demo: 1,
         };
     
     handleClick = () => {
@@ -15,8 +16,10 @@ class App extends Component {
         return (
             <div id='test-id'>
                 <h2>Hell from React</h2>
-                <Messages messages={['First message.', 'Second message.', 'Three message.']} />
-                <button onClick={this.handleClick}>{this.state.count}</button>
+                <Messages
+                    messages={['First message.', 'Second message.', 'Three message.']}
+                    count={this.state.count}
+                    handleClick={this.handleClick} />
             </div>
         );
     }
