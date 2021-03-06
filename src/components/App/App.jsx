@@ -34,5 +34,4 @@ class App extends Component {
 //        {/*<Message text="My two message."/> */}
 //    </div>;
 //};
-//export default App; для себя оставлю. Вариант по умолчанию
 export { App };
