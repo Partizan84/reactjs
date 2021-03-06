@@ -10,13 +10,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static', 'build'),
         filename: 'bundle.js',
-        publicPath: '/static/build/',
+        //publicPath: '/',
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                include: path.resolve(__dirname,'src'),
+                include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
@@ -29,6 +29,12 @@ module.exports = {
                             },
                         ],
                     ],
+                    plugins: [
+                        [
+                            '@babel/plugin-proposal-class-properties',
+                            { loose: true },
+                        ]
+                    ]
                 },
             },
         ],
@@ -39,9 +45,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin(
             {
-                template: path.resolve(__dirname,'./index.html'),
+                template: './index.html',
                 filename: 'index.html',
             },
         ),
     ],
+    devtool: 'inline-source-map',
 };
