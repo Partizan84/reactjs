@@ -2,25 +2,25 @@
 //если есть настройка в конфиге ключ у '@babel/preset-react' - "runtime: 'automatic'"
 
 // Повторное введение, необходимость
-import {Component} from 'react';
+import { Component, Fragment } from 'react';
 
 class Messages extends Component {
 
     render() {
-        const {messages = [], count, handelClick } = this.props;
+        const { messages = [], count, handelClick } = this.props;
         return (
-            <>
+            <Fragment>
                 <div className='messages'>
                     {messages.map((item, index) => (
                         <Message key={index} text={item} />
                     ))}
                 </div>
                 <button onClick={handelClick}>{count}</button>
-            </>
+            </Fragment>
         );
     }
 }
- 
+
 // const Messages = (props) => {   
 // const {messages = []} = props;
 //
@@ -38,4 +38,4 @@ const Message = (props) => {
     return <div className='my-class'>{props.text}</div>;
 };
 
-export {Messages};
+export { Messages };
