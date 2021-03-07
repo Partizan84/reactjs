@@ -3,41 +3,30 @@ import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 class Messages extends Component {
-    static propTypes = {
-        messages: PropTypes.array.isRequired,
-        count: PropTypes.number,
-        handleClick: PropTypes.func,
-    };
-    //Один из вариантов записи переменных по умолчанию
-    //static defaultProps = {
-    //    messages: [],
-    //};
 
     state = {
-        intervalId: null,
+        messages: ['Hello world', 'How are you?'],
+        msg: [{ author: 'Назаров Константин', robot: 'T-800' }],
     };
 
-    componentDidMount() {
-        console.log('componentDidMount');
-        const id = setInterval(() => {
-            console.log('hello from interval');
-        }, 1000);
-        this.setState({ intervalId: id });
-    }
+    addMessage = () => {
+        this.setState({ messages: [...this.state.messages, 'Whassap?'] });
+    };
 
     componentDidUpdate() {
-        console.log('componentDidUpdate');
-    }
-
-    componentWillUnmount() {
-        console.log('componentWillUnmount');
-        clearInterval(this.state.intervalId);
-    }
+        console.log('Запуск компоненты обновления');
+        if (this.state.messages.length % 2 === 1) {
+            setTimeout(() => {
+                this.setState({
+                    messages: [...this.state.messages, 'I am Mashine'],
+                });
+            }, 1000);
+        }
+    };
 
     render() {
-        console.log('render', this.propsnpm);
-        //Один из вариатов задачи переменных по умолчанию
-        const { messages = [], count, handleClick } = this.props;
+        console.log('render', this.state);
+        const { messages = [] } = this.state;
 
         return (
             <Fragment>
@@ -47,21 +36,11 @@ class Messages extends Component {
                     ))}
                 </div>
 
-                <button onClick={handleClick}>{count}</button>
+                <button onClick={this.addMessage}>Отправить сообщение</button>
             </Fragment>
         );
     }
 }
-//const Messages = (props) => {
-//    const { messages = [] } = props;
-//    return (
-//        <div className='messages'>
-//            {messages.map((item, index) => (
-//                <Message key={index} text={item} />
-//            ))}
-//        </div>
-//    );
-//};
 
 //Парамент функции Message - props (свойства) принимает свойство text из App.jsx передает своё значение My new message
 const Message = (props) => {
