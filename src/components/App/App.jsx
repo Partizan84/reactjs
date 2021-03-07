@@ -10,18 +10,22 @@ class App extends Component {
 
     handleClick = () => {
         this.setState({ count: this.state.count + 1 });
-    }
+    };
 
     render() {
         return (
             <div id='test-id'>
                 <h2>Hell from React!!!</h2>
-                <Messages messages={['First message.', 'Second message.', 'Three message.']} />
-                <button onClick={this.handleClick}>{this.state.count}</button>
+                <Messages
+                    messages={['First message.', 'Second message.', 'Three message.']}
+                    count={this.state.count}
+                    handleClick={this.handleClick}
+                />
             </div>
         );
     }
 }
+//<button onClick={this.handleClick}>{this.state.count}</button>
 //const App = () => {
 //return React.createElement('div', {id: 'Test-id'}, 'Reaction from React'); для себя оставлю комментарий.
 //    return (

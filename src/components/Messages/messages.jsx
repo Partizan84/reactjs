@@ -1,20 +1,19 @@
-import { Component } from 'react';
-//import React from 'react'; можно не использовать,
-//если есть настройка в конфиге ключ у '@babel/preset-react' - "runtime: 'automatic'"
-class Messages extends Component {
-    constructor(props) {
-        super(props);
-    }
+import { Component, Fragment } from 'react';
 
+class Messages extends Component {
     render() {
-        const { messages = [] } = this.props;
+        const { messages = [], count, handleClick } = this.props;
 
         return (
-            <div className='messages'>
-                {messages.map((item, index) => (
-                    <Message key={index} text={item} />
-                ))}
-            </div>
+            <Fragment>
+                <div className='messages'>
+                    {messages.map((item, index) => (
+                        <Message key={index} text={item} />
+                    ))}
+                </div>
+
+                <button onClick={handleClick}>{count}</button>
+            </Fragment>
         );
     }
 }
