@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 class Messages extends Component {
 
     state = {
-        messages: ['Hello world', 'How are you?'],
-        msg: [{ author: 'Назаров Константин', robot: 'T-800' }],
+        messages: [
+            { text: 'Hello world', author: 'Human' },
+            { text: 'How are you?', author: 'Human' },
+        ],
     };
 
     addMessage = () => {
-        this.setState({ messages: [...this.state.messages, 'Whassap?'] });
+        this.setState({ messages: [...this.state.messages, { text: 'Whassap?', author: 'Human' }] });
     };
 
     componentDidUpdate() {
@@ -18,7 +20,7 @@ class Messages extends Component {
         if (this.state.messages.length % 2 === 1) {
             setTimeout(() => {
                 this.setState({
-                    messages: [...this.state.messages, 'I am Mashine'],
+                    messages: [...this.state.messages, { text: 'I am Mashine', author: 'Robot' }],
                 });
             }, 1000);
         }
@@ -32,7 +34,11 @@ class Messages extends Component {
             <Fragment>
                 <div className='messages'>
                     {messages.map((item, index) => (
-                        <Message key={index} text={item} />
+                        <Message
+                            key={index}
+                            text={item.text}
+                            author={item.author}
+                        />
                     ))}
                 </div>
 
@@ -44,7 +50,12 @@ class Messages extends Component {
 
 //Парамент функции Message - props (свойства) принимает свойство text из App.jsx передает своё значение My new message
 const Message = (props) => {
-    return <div className='my-class'>{props.text}</div>;
+    return (
+        <div className='my-class'>
+            <div>{props.text}</div>
+            <div>{props.author}</div>
+        </div>
+    );
 };
 
 export { Messages };
