@@ -48,14 +48,14 @@ class Messages extends Component {
     }
 }
 
-//Парамент функции Message - props (свойства) принимает свойство text из App.jsx передает своё значение My new message
-const Message = (props) => {
-    return (
-        <div className='my-class'>
-            <div>{props.text}</div>
-            <div>{props.author}</div>
-        </div>
-    );
-};
+
+//const Message = (props) => {
+//    return (
+//        <div className='my-class'>
+//            <div>{props.text}</div>
+//            <div>{props.author}</div>
+//        </div>
+//    );
+//};
 
 export { Messages };
