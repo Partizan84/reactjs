@@ -1,6 +1,7 @@
 import { Component, Fragment } from 'react';
 //import { NamedModulesPlugin } from 'webpack';
 import PropTypes from 'prop-types';
+import { Message } from './message';
 
 class Messages extends Component {
 
@@ -36,8 +37,7 @@ class Messages extends Component {
                     {messages.map((item, index) => (
                         <Message
                             key={index}
-                            text={item.text}
-                            author={item.author}
+                            {...item} /*Спрэд оператор заменяет item.text и item.author */
                         />
                     ))}
                 </div>
