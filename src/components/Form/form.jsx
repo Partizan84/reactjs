@@ -13,7 +13,19 @@ class Form extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-    }
+        this.doSumthing();
+    };
+
+    doSumthing = () => {
+        console.log('submit from fe');
+    };
+
+    handleKeyDown = (event) => {
+        console.log(event.key);
+        if (event.key === 'Enter') {
+            this.doSumthing();
+        }
+    };
 
     render() {
         return (
@@ -22,6 +34,7 @@ class Form extends Component {
                     name='username'
                     value={this.state.username}
                     onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
                 />
                 <input
                     name='message'

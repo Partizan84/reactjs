@@ -5,7 +5,7 @@ function App() {
     console.log('Hell from React');
     return (
         <div>
-            {/* <Form /> */};
+            <Form />
             {/* <Messages /> */}
             <UncontrolledForm />
         </div>
