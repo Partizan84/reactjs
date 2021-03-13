@@ -1,0 +1,16 @@
+.message {
+    border-radius: 10px;
+    background-color: lightgreen;
+    max-width: 200px;
+    margin: 10px 0;
+    padding: 10px 15px;
+}
+.message__text{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.message__author {
+    font-size: 0.8rem;
+    color: coral;
+}

@@ -5,9 +5,9 @@ function App() {
     console.log('Hell from React');
     return (
         <div>
-            <Form />
-            {/* <Messages /> */}
-            <UncontrolledForm />
+            {/*<Form />*/}
+            <Messages />
+            {/*<UncontrolledForm />*/}
         </div>
     );
 }
