@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static', 'build'),
         filename: 'bundle.js',
-        //publicPath: '/',
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -39,11 +39,10 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader'
+                    'css-loader',
                 ],
             },
         ],
@@ -60,8 +59,8 @@ module.exports = {
         ),
         new MiniCssExtractPlugin(
             {
-                filename: 'bundle.css'
-            }
+                filename: 'bundle.css',
+            },
         ),
     ],
     devtool: 'inline-source-map',
