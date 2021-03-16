@@ -2,9 +2,13 @@ import './message.css';
 
 const Message = (props) => {
     return (
-        <div className='message' /*style={mainStyle}*/>
-            <div className='message__text'>{props.text}</div>
-            <div className='message__author'>{props.author}</div>
+        <div className='message'>
+            <div className='message__text'>
+                {props.text}
+            </div>
+            <div className='message__author'>
+                {props.author}
+            </div>
         </div>
     );
 };

@@ -1,5 +1,4 @@
 import { Component, Fragment } from 'react';
-//import { NamedModulesPlugin } from 'webpack';
 import PropTypes from 'prop-types';
 import { Message } from './message';
 

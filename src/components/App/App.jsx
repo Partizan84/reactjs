@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 function App() {
     const messageTextFieldRef = useRef();
 
-    console.log(messageRef);
+    console.log(messageTextFieldRef);
 
     console.log('Hell from React');
 
@@ -20,7 +20,7 @@ function App() {
             {/*<UncontrolledForm />*/}
             <Messages />
             <div>
-                <TextField label="Outlined" variant="outlined" inputRef={messageRef} />
+                <TextField label="Outlined" variant="outlined" inputRef={messageTextFieldRef} />
                 <Button
                     color='primary'
                     variant='contained'
