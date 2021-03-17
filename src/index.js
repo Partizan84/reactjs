@@ -1,5 +1,5 @@
 console.log('hello world');
-console.log("i am mashine");
+console.log("i am chat");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
