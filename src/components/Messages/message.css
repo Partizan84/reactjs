@@ -7,12 +7,12 @@
 }
 .message__text {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color:slateblue;
 }
 
 .message__author {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: coral;
 }
 
@@ -21,20 +21,20 @@
     flex-direction: column;
     background-color: beige;
     padding: 10px 15px;
-    height: 500px;
-    width: 70%;
+    height: 400px;
+    width: 100%;
 }
 
 .messages {
     height: 350px;
-    display: flex;
+    display:flex;
     flex-direction: column;
     align-items: flex-end;
     overflow-y: auto;
 }
 
 .message-mine {
-    align-self: flex;
+    align-self: flex-start;
 }
 
 .message-new {
