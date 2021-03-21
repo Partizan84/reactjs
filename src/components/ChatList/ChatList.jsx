@@ -2,7 +2,7 @@ import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import Send from '@material-ui/icons/Send';
 import './ChatList.css';
 
-const chats = ['Chat 1', 'Chat 2', 'Chat 3', 'Chat 4'];
+const chats = ['Чат 1', 'Чат 2', 'Чат 3', 'Чат 4'];
 
 const ChatList = () => {
     return (

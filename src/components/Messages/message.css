@@ -1,13 +1,14 @@
 .message {
     border-radius: 10px;
-    background-color:cornsilk;
-    max-width: 200px;
+    background-color:lightskyblue;
+    width: 530px;
     margin: 10px 0;
     padding: 10px 15px;
 }
+
 .message__text {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color:slateblue;
 }
 
@@ -21,7 +22,7 @@
     flex-direction: column;
     background-color: beige;
     padding: 10px 15px;
-    height: 400px;
+    height: 350px;
     width: 100%;
 }
 

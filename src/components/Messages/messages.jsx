@@ -57,7 +57,7 @@ class Messages extends Component {
                     <TextField
                         className="text-field"
                         value={this.state.textMessage}
-                        label='New Message'
+                        label='Новое сообщение'
                         onChange={(event) =>
                             this.setState({
                                 textMessage: event.target.value,
