@@ -1,12 +1,12 @@
-import { Layout } from '../Layout';
 import { Header } from '../Header';
+import { Router } from '../Router';
 
 function App() {
     console.log('Hell from React');
     return (
         <div style={appStyle}>
             <Header />
-            <Layout />
+            <Router />
         </div>
     );
 }
