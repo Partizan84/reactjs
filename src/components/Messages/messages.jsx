@@ -1,10 +1,19 @@
 import { Component, createRef } from 'react';
 import { TextField, Icon, IconButton } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 import { Message } from './Message';
 
 import './Message.css';
+
+const styles = {
+    root: {
+        color: 'red',
+        height: '480px',
+        padding: '0 30px',
+    },
+};
 
 class Messages extends Component {
     static propTypes = {
