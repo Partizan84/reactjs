@@ -5,15 +5,15 @@ import PropTypes from 'prop-types';
 
 import { Message } from './Message';
 
-import './Message.css';
+//import './Message.css';
 
-const styles = {
-    root: {
-        color: 'red',
-        height: '480px',
-        padding: '0 30px',
-    },
-};
+//const styles = {
+//    root: {
+//        color: 'red',
+//        height: '480px',
+//        padding: '0 30px',
+//    },
+//};
 
 class Messages extends Component {
     static propTypes = {
@@ -35,15 +35,19 @@ class Messages extends Component {
 
     fieldRef = createRef();
 
-    addMessage = () => {
-        const { currentChat } = this.props;
+    addMessage = (msg = '', author = '') => {
+        const chatId = this.props.currentChat;
+        const prevMessages = this.state.messages[chatId] || [];
 
         this.setState({
             messages: {
                 ...this.state.messages,
-                [currentChat]: [
-                    ...this.state.messages[currentChat],
-                    { text: this.state.textMessage, author: 'Human' },
+                [chatId]: [
+                    ...prevMessages,
+                    {
+                        text: msg.length ? msg : this.state.textMessage,
+                        author: author.length ? author : 'Human',
+                    },
                 ],
             },
             textMessage: '',
@@ -52,41 +56,33 @@ class Messages extends Component {
 
     componentDidUpdate(_, prevState) {
         console.log('Запуск компоненты обновления');
-        const { currentChat } = this.props;
+        const chatId = this.props.currentChat;
 
         if (
-            prevState.messages[currentChat].length !==
-            this.state.messages[currentChat].length &&
-            this.state.messages[currentChat].length % 2 === 1
+            prevState.messages[chatId]?.length !==
+            this.state.messages[chatId]?.length &&
+            this.state.messages[chatId].length % 2 === 1
         ) {
             setTimeout(() => {
-                this.setState({
-                    messages: {
-                        ...this.state.messages,
-                        [currentChat]: [
-                            ...this.state.messages[currentChat],
-                            { text: 'I am Mashine', author: 'Robot' },
-                        ],
-                    },
-                    textMessage: '',
-                });
+                this.addMessage('I am Mashine', 'Robot');
             }, 1000);
         }
         this.fieldRef.current.scrollTop = this.fieldRef.current.scrollHeight;
     }
 
     render() {
-        const { messages = [] } = this.state;
-        const { currentChat } = this.props;
-        console.log('Messages, render', currentChat);
+        const { messages = {} } = this.state;
+        const chatId = this.props.currentChat;
+
+        console.log('Messages, render', chatId);
 
         return (
             <div className='message-field'>
                 {
-                    currentChat && (
+                    this.props.currentChat && (
                         <>
                             <div className='messages' ref={this.fieldRef}>
-                                {messages[currentChat] && messages[currentChat].map((item, index) => (
+                                {messages[chatId] && messages[chatId].map((item, index) => (
                                     <Message key={index} {...item} />
                                 ))}
                             </div>

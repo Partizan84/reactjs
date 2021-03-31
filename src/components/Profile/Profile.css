@@ -1,0 +1,10 @@
+.profile {
+    font-size: 1 rem;
+    display: flex;
+    width: 100%;
+    padding: 20px 0;
+    text-align:right;
+    background-color: darkgoldenrod;
+    color:lightskyblue;
+    text-transform: uppercase;
+}

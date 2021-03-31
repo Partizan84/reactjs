@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
-import { Layout } from '../Layout';
+
 import { Profile } from '../Profile';
+import { Layout } from '../Layout';
 import { NotFound } from '../NotFound';
 
 const Router = () => {
