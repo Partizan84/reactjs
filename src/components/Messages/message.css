@@ -1,0 +1,50 @@
+.message {
+    border-radius: 10px;
+    background-color:lightskyblue;
+    max-width: 200px;
+    margin: 10px 0;
+    padding: 10px 15px;
+}
+
+.message__text {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.message__author {
+    font-size: 0.8rem;
+    color: coral;
+}
+
+.message__field {
+    display: flex;
+    flex-direction: column;
+    background-color:mediumaquamarine;
+    padding: 10px 15px;
+    height: 400px;
+    width: 70%;
+}
+
+.messages {
+    height: 350px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-y: auto;
+}
+
+.message-mine {
+    align-self: flex-start;
+}
+
+.message-new {
+    display: flex;
+}
+
+.message-new > div:first-child {
+    flex-grow: 1;
+}
+
+.text-field input {
+    color:cadetblue;
+}

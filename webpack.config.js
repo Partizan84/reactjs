@@ -1,5 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
+const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
@@ -8,6 +11,61 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static', 'build'),
         filename: 'bundle.js',
-        publicPath: '/static/build/',
+        publicPath: '/',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                include: path.resolve(__dirname, 'src'),
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                options: {
+                    presets: [
+                        '@babel/env',
+                        [
+                            '@babel/preset-react',
+                            {
+                                runtime: 'automatic',
+                            },
+                        ],
+                    ],
+                    plugins: [
+                        [
+                            '@babel/plugin-proposal-class-properties',
+                            { loose: true },
+                        ]
+                    ],
+                },
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                ],
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
+    plugins: [
+        new HtmlWebpackPlugin(
+            {
+                template: './index.html',
+                filename: 'index.html',
+            },
+        ),
+        new MiniCssExtractPlugin(
+            {
+                filename: 'bundle.css',
+            },
+        ),
+    ],
+    devtool: 'inline-source-map',
+    devServer: {
+        hot: true,
+        historyApiFallback: true,
     },
 };

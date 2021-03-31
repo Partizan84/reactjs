@@ -1,0 +1,14 @@
+.header {
+    padding: 10px 0;
+    text-align: center;
+    background-color: darkgoldenrod;
+    color:lightskyblue;
+    text-transform: uppercase;
+}
+.menu-item {
+    color:brown;
+    text-decoration: none;
+}
+.menu-item:not(:last-child) {
+    margin-right: 10px;
+}
