@@ -3,5 +3,5 @@ import { chatReducer } from './chatReducer';
 
 export default combineReducers({
     chat: chatReducer,
-    profile: profileRedux,
+    //profile: profileRedux,
 });

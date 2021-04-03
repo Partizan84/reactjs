@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './Reducers';
 
 const initialState = {
@@ -9,6 +10,11 @@ const initialState = {
     },
 };
 
-const store = createStore(reducers, initialState);
+const store = createStore(
+    reducers,
+    initialState,
+    //windows.__REDUX_DEVTOOLS_EXTENSION__ && windows.__REDUX_DEVTOOLS_EXTENSION__()
+    composeWithDevTools(),
+);
 
 export { store };

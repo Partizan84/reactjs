@@ -1,35 +1,20 @@
 import { Component, createRef } from 'react';
 import { TextField, Icon, IconButton } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+//import { bindActionCreators } from 'redux';
 
+import { sendMessage } from '../Redux/Actions/messagesActions';
 import { Message } from './Message';
 
-//import './Message.css';
-
-//const styles = {
-//    root: {
-//        color: 'red',
-//        height: '480px',
-//        padding: '0 30px',
-//    },
-//};
-
-class Messages extends Component {
+class _Messages extends Component {
     static propTypes = {
         currentChat: PropTypes.string,
+        messages: PropTypes.object.isRequired,
+        sendMessage: PropTypes.func.isRequired,
     };
 
     state = {
-        messages: {
-            0: [
-                { text: 'Hello world', author: 'Human' },
-                { text: 'How are you?', author: 'Human' },
-            ],
-            1: [],
-            2: [{ text: 'Это Чат 2.', author: 'Human' }],
-            3: [],
-        },
         textMessage: '',
     };
 
@@ -37,31 +22,25 @@ class Messages extends Component {
 
     addMessage = (msg = '', author = '') => {
         const chatId = this.props.currentChat;
-        const prevMessages = this.state.messages[chatId] || [];
+        const newMessage = msg.length ? msg : this.state.textMessage;
+        const currentAuthor = author.length ? author : 'Human';
+
+        (msg.length || this.state.textMessage) &&
+            this.props.sendMessage(newMessage, currentAuthor, chatId);
 
         this.setState({
-            messages: {
-                ...this.state.messages,
-                [chatId]: [
-                    ...prevMessages,
-                    {
-                        text: msg.length ? msg : this.state.textMessage,
-                        author: author.length ? author : 'Human',
-                    },
-                ],
-            },
             textMessage: '',
         });
     };
 
-    componentDidUpdate(_, prevState) {
+    componentDidUpdate(prevProps) {
         console.log('Запуск компоненты обновления');
         const chatId = this.props.currentChat;
 
         if (
-            prevState.messages[chatId]?.length !==
-            this.state.messages[chatId]?.length &&
-            this.state.messages[chatId].length % 2 === 1
+            prevProps.messages[chatId]?.length !==
+            this.props.messages[chatId]?.length &&
+            this.props.messages[chatId].length % 2 === 1
         ) {
             setTimeout(() => {
                 this.addMessage('I am Mashine', 'Robot');
@@ -71,8 +50,8 @@ class Messages extends Component {
     }
 
     render() {
-        const { messages = {} } = this.state;
-        const chatId = this.props.currentChat;
+        const { messages = {}, currentChat: chatId } = this.props;
+        //const chatId = this.props.currentChat;
 
         console.log('Messages, render', chatId);
 
@@ -117,5 +96,15 @@ class Messages extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    messages: state.chat.messages,
+});
+
+//const mapDispatchToProps = (dispatch) =>
+//  bindActionCreators({ sendMessage }, dispatch);
+
+//const Messages = connect(mapStateToProps, mapDispatchToProps)(_Messages);
+const Messages = connect(mapStateToProps, { sendMessage })(_Messages);
 
 export { Messages };
