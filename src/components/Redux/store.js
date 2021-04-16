@@ -4,6 +4,7 @@ import reducers from './Reducers';
 
 const initialState = {
     chat: {
+        chats: ['Чат 1'],
         messages: {
             0: [{ text: 'Hello from store.js', author: 'Robot' }]
         },

@@ -6,9 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import './index.css';
-import { store } from './redux/store';
+import { store } from './components/Redux/store';
 
-import { App } from './components/App';
+import { App } from './components/App/App';
 
 ReactDOM.render(
     <BrowserRouter>

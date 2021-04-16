@@ -4,3 +4,16 @@
     overflow-y: auto;
     height: 420px;
 }
+/*.chat-list a {
+   color:#fff;
+   text-decoration:none; 
+}*/
+.new-chat {
+    padding: 10px;
+    position: relative;
+}
+.new-chat > *:last-child {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
